@@ -26,9 +26,8 @@ partir de repositório **público**.
 
 Estão marcadas com comentário `<!-- TROQUE ... -->` dentro do `index.html`:
 
-1. **E-mail de suporte.** Está `pingprong.suporte@gmail.com`, que ainda não
-   existe. Crie essa conta ou troque por outra. Não use o e-mail da conta de
-   desenvolvedor — ele vira alvo de spam ao ficar numa página pública.
+1. ~~E-mail de suporte~~ — **feito**. É `hasman.corp.support@gmail.com`, na
+   página e nas duas versões (PT/EN) da política de privacidade.
 2. **Link da App Store.** O botão está desativado com "Em breve". Quando o app
    for aprovado, troque o `href` e remova `aria-disabled="true"`.
 3. **Link do TestFlight.** O botão "Quero testar antes" aponta para a seção de
