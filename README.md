@@ -46,7 +46,8 @@ mudar junto.
 ## Ver a página localmente
 
 ```bash
-cd ~/PingProng-Site && python3 -m http.server 8000
+cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/01.Mac\ do\ RA/Claude/PingProng\ -\ Site \
+  && python3 -m http.server 8000
 ```
 
 Depois abra <http://localhost:8000>.
@@ -65,5 +66,6 @@ O log `PPDIAG` marca cada ponto, cada bônus e cada BLAST por segundo — foi el
 que localizou os melhores momentos, em vez de assistir aos 200 segundos.
 
 O corte e o redimensionamento foram feitos com `Montar.swift` (AVFoundation),
-em `~/PingProng-Video`, porque esta máquina não tem ffmpeg. O mesmo utilitário
+na pasta irmã `PingProng - Vendas/Redes Sociais/ferramentas/`, porque esta
+máquina não tem ffmpeg. O mesmo utilitário
 gerou o **App Preview** da App Store: 886x1920, 30 fps, 26,5 s.
