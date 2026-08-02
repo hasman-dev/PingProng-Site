@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ping Prong — Enfrente o poderoso PRONG</title>
+<meta name="description" content="Jogo de ping pong para iPhone. Sem anúncios, sem compras dentro do app, sem coleta de dados. Compre uma vez e jogue offline, para sempre.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ping Prong — Enfrente o poderoso PRONG">
+<meta property="og:description" content="Sem anúncios, sem compras dentro do app e sem coleta de dados. Compre uma vez e jogue offline, para sempre.">
+<meta property="og:image" content="icone.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icone-web.png">
+
+<style>
+  :root{
+    --bg0:#05070A; --bg1:#0B111A; --panel:#0D1420; --edge:#16202E;
+    --mint:#2DE6B0; --copper:#E8935A; --danger:#FF6B6B;
+    --cyan:#38E7FF; --magenta:#FF4FD8; --gold:#FFE14D;
+    --ink:#EAF1EE; --muted:#6F8497;
+    --mono: ui-monospace, SFMono-Regular, Menlo, "SF Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg0); color:var(--ink);
+    font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 15% 12%, rgba(45,230,176,.10), transparent 45%),
+      radial-gradient(circle at 85% 88%, rgba(232,147,90,.10), transparent 45%);
+    background-attachment:fixed;
+  }
+  .wrap{ max-width:62rem; margin:0 auto; padding:0 22px; }
+  a{ color:var(--mint); }
+
+  /* ---------- topo ---------- */
+  header{ padding:72px 0 8px; text-align:center; }
+  .mark{ width:96px; height:96px; display:block; margin:0 auto 22px;
+         filter:drop-shadow(0 0 14px rgba(232,147,90,.45)); }
+  h1{
+    font:800 clamp(2.6rem,9vw,4.6rem)/0.95 var(--sans);
+    letter-spacing:-.035em; margin:0; text-transform:uppercase;
+  }
+  h1 .p1{ color:var(--mint); } h1 .p2{ color:var(--copper); }
+  .sub{
+    font:600 .82rem/1 var(--mono); letter-spacing:.28em; text-transform:uppercase;
+    color:var(--muted); margin:20px 0 0;
+  }
+  .pitch{ max-width:34rem; margin:26px auto 0; color:#B6C4CE; font-size:1.06rem; }
+
+  /* ---------- botões ---------- */
+  .cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:34px 0 0; }
+  .btn{
+    display:inline-block; padding:13px 26px; border-radius:11px;
+    font:700 .82rem/1 var(--mono); letter-spacing:.14em; text-transform:uppercase;
+    text-decoration:none; border:1px solid var(--edge); transition:.16s;
+  }
+  .btn-primary{ background:var(--mint); color:#04120D; border-color:var(--mint); }
+  .btn-primary:hover{ box-shadow:0 0 26px rgba(45,230,176,.4); transform:translateY(-1px); }
+  .btn-ghost{ background:var(--panel); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--mint); color:var(--mint); }
+  .btn[aria-disabled="true"]{ opacity:.45; pointer-events:none; }
+
+  /* ---------- capturas ---------- */
+  .shots{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    margin:70px 0 0; align-items:start;
+  }
+  .shots img{
+    width:100%; height:auto; display:block; border-radius:18px;
+    border:1px solid var(--edge); box-shadow:0 18px 50px rgba(0,0,0,.55);
+  }
+  @media (max-width:640px){ .shots{ grid-template-columns:1fr; max-width:20rem; margin-inline:auto; } }
+
+  /* ---------- seções ---------- */
+  section{ padding:76px 0 0; }
+  h2{
+    font:700 .78rem/1 var(--mono); letter-spacing:.26em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 26px; padding-bottom:14px;
+    border-bottom:1px solid var(--edge);
+  }
+  .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:16px; }
+  .card{
+    background:var(--panel); border:1px solid var(--edge);
+    border-radius:14px; padding:22px 22px 24px;
+  }
+  .card h3{
+    font:700 .76rem/1 var(--mono); letter-spacing:.2em; text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  .card p{ margin:0; color:#A9B8C4; font-size:.95rem; }
+  .c-gold h3{ color:var(--gold); }
+  .c-cyan h3{ color:var(--cyan); }
+  .c-mag h3{ color:var(--magenta); }
+  .c-mint h3{ color:var(--mint); }
+
+  /* ---------- o que não tem ---------- */
+  .nots{ display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:12px; }
+  .not{
+    border:1px solid var(--edge); border-radius:12px; padding:18px;
+    background:linear-gradient(180deg, rgba(45,230,176,.05), transparent);
+  }
+  .not b{ display:block; font:700 1.02rem/1.3 var(--sans); color:var(--mint); margin-bottom:3px; }
+  .not span{ font:.82rem/1.4 var(--mono); color:var(--muted); }
+
+  /* ---------- suporte ---------- */
+  .box{
+    background:var(--panel); border:1px solid var(--edge);
+    border-radius:14px; padding:26px;
+  }
+  .box p{ margin:0 0 12px; color:#A9B8C4; }
+  .box p:last-child{ margin-bottom:0; }
+
+  footer{
+    margin-top:88px; padding:30px 0 60px; border-top:1px solid var(--edge);
+    font:.8rem/1.7 var(--mono); color:var(--muted);
+    display:flex; gap:18px; flex-wrap:wrap; justify-content:space-between;
+  }
+  footer a{ color:var(--muted); }
+  footer a:hover{ color:var(--mint); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!-- A marca do PRONG, os mesmos caminhos de ProngMark.swift (espaço 88x88) -->
+    <svg class="mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#E8935A">
+        <rect x="4"  y="32" width="14" height="6" rx="3"/>
+        <rect x="70" y="32" width="14" height="6" rx="3"/>
+        <rect x="4"  y="44" width="14" height="6" rx="3"/>
+        <rect x="70" y="44" width="14" height="6" rx="3"/>
+        <rect x="16" y="18" width="56" height="50" rx="12"/>
+      </g>
+      <polyline points="30,74 35,82 40,74 44,82 49,74 53,82 58,74"
+                fill="none" stroke="#FF6B6B" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#05070A">
+        <polygon points="25,34 41,43 41,52 25,43"/>
+        <polygon points="63,34 47,43 47,52 63,43"/>
+      </g>
+    </svg>
+
+    <h1><span class="p1">Ping</span> <span class="p2">Prong</span></h1>
+    <p class="sub">Enfrente o poderoso PRONG</p>
+    <p class="pitch">
+      O PRONG não erra por cansaço. Não se distrai, não tem pressa
+      e não vai facilitar. Um jogo de ping pong de uma mão só, para iPhone.
+    </p>
+
+    <!-- TROQUE quando a ficha estiver publicada: href da App Store e do TestFlight -->
+    <div class="cta">
+      <a class="btn btn-primary" href="#" aria-disabled="true">Em breve na App Store</a>
+      <a class="btn btn-ghost" href="#suporte">Quero testar antes</a>
+    </div>
+  </header>
+
+  <div class="shots">
+    <img src="capturas/1-abertura-web.png" width="660" height="1434" loading="lazy"
+         alt="Tela de abertura do Ping Prong, com a marca do PRONG e o botão Enfrentar.">
+    <img src="capturas/2-partida-web.png" width="660" height="1434" loading="lazy"
+         alt="Partida em andamento: quadra em estética de placa de circuito, placar e barra do BLAST.">
+    <img src="capturas/3-vitoria-web.png" width="660" height="1434" loading="lazy"
+         alt="Tela de fim de set mostrando a vitória do jogador e o botão Revanche.">
+  </div>
+
+  <section id="jogo">
+    <h2>Como se joga</h2>
+    <div class="cards">
+      <div class="card c-gold">
+        <h3>O disparo BLAST</h3>
+        <p>Cinco rebatidas certas seguidas carregam a barra. Quando ela fica dourada,
+           você tem instantes para tocar na tela no exato momento em que a bola encosta
+           na raquete. Acertar o tempo devolve a bola numa velocidade que o PRONG
+           dificilmente alcança. Perder o ponto zera a carga — é risco de verdade.</p>
+      </div>
+      <div class="card c-cyan">
+        <h3>Zona Lenta</h3>
+        <p>Uma cápsula é lançada do centro da quadra e não cai no seu colo: você
+           precisa interceptá-la com a raquete, largando a bola por um instante.
+           Ela deixa a bola mais lenta enquanto estiver do seu lado. Dura 8 segundos.</p>
+      </div>
+      <div class="card c-mag">
+        <h3>Raquete+</h3>
+        <p>A outra cápsula aumenta o tamanho da sua raquete pelos mesmos 8 segundos.
+           As duas podem estar ativas ao mesmo tempo — e o PRONG também as pega,
+           se você deixar.</p>
+      </div>
+      <div class="card c-mint">
+        <h3>Três velocidades</h3>
+        <p>Um botão cicla entre três níveis. Cada um acelera a bola <em>e</em> o PRONG
+           na mesma medida, então subir a velocidade nunca é uma forma de facilitar.
+           Vence quem chegar a 11 pontos com 2 de vantagem, a regra oficial do
+           tênis de mesa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="feito-para-iphone">
+    <h2>Feito para o iPhone</h2>
+    <div class="cards">
+      <div class="card">
+        <h3 style="color:var(--ink)">Retrato ou paisagem</h3>
+        <p>Gire o aparelho no meio da partida: o placar, a carga do BLAST e a posição
+           da bola continuam exatamente onde estavam.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--ink)">60 quadros por segundo</h3>
+        <p>Estáveis, medidos em aparelho real. Resposta tátil a cada rebatida,
+           ponto e disparo.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--ink)">Respeita o seu aparelho</h3>
+        <p>Os efeitos sonoros obedecem à chave de silencioso e nunca interrompem a sua
+           música. As animações respeitam Reduzir Movimento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-que-nao-tem">
+    <h2>O que ele não tem</h2>
+    <div class="nots">
+      <div class="not"><b>Sem anúncios</b><span>nenhum, em lugar nenhum</span></div>
+      <div class="not"><b>Sem compras</b><span>nada dentro do app</span></div>
+      <div class="not"><b>Sem cadastro</b><span>nenhuma conta, nenhum login</span></div>
+      <div class="not"><b>Sem internet</b><span>funciona no modo avião</span></div>
+      <div class="not"><b>Sem coleta</b><span>zero dados, auditado</span></div>
+    </div>
+    <p style="margin:22px 0 0; color:#A9B8C4;">
+      Seu recorde de rebatidas e suas vitórias ficam gravados no seu aparelho e não
+      vão para lugar algum. O app não faz uma única chamada de rede, não usa nenhum
+      SDK de terceiros e não pede nenhuma permissão.
+      <a href="privacidade.html">Leia a política de privacidade</a>.
+    </p>
+  </section>
+
+  <section id="suporte">
+    <h2>Suporte e contato</h2>
+    <div class="box">
+      <p>Encontrou um problema, tem uma sugestão ou quer testar o jogo antes do
+         lançamento? Escreva — todo e-mail é lido por uma pessoa.</p>
+      <!-- TROQUE pelo e-mail de suporte definitivo antes de publicar -->
+      <p><a class="btn btn-ghost" href="mailto:pingprong.suporte@gmail.com">pingprong.suporte@gmail.com</a></p>
+      <p style="font-size:.88rem; color:var(--muted); margin-top:16px;">
+        Resposta normalmente em até dois dias úteis. O jogo é feito por uma pessoa só.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ping Prong © 2026 Ramon Machado Hasman</span>
+    <span>
+      <a href="privacidade.html">Privacidade</a> ·
+      <a href="#suporte">Suporte</a> ·
+      Feito no Brasil
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>
