@@ -19,7 +19,7 @@ partir de repositório **público**.
 | --- | --- |
 | `index.html` | A página do jogo. Autocontida: sem fonte externa, sem script, sem CDN. |
 | `privacidade.html` | Cópia da política auditada que vive em `Loja/` no repositório do jogo. |
-| `capturas/*-web.png` | As capturas da loja reduzidas para 660px de largura. |
+| `capturas/*-web.png` | Abertura e vitória, reduzidas para 660px. A captura da partida saiu: o vídeo já mostra a mesma tela. |
 | `gameplay.mp4` | Laço de 14,5s do piloto automático jogando, 442x960, mudo. Toca sozinho na página. |
 | `gameplay-poster.png` | Primeiro quadro do vídeo, exibido enquanto ele carrega. |
 | `icone.png` / `icone-web.png` | Ícone do app, para og:image e favicon. |
