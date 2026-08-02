@@ -20,6 +20,8 @@ partir de repositório **público**.
 | `index.html` | A página do jogo. Autocontida: sem fonte externa, sem script, sem CDN. |
 | `privacidade.html` | Cópia da política auditada que vive em `Loja/` no repositório do jogo. |
 | `capturas/*-web.png` | As capturas da loja reduzidas para 660px de largura. |
+| `gameplay.mp4` | Laço de 14,5s do piloto automático jogando, 442x960, mudo. Toca sozinho na página. |
+| `gameplay-poster.png` | Primeiro quadro do vídeo, exibido enquanto ele carrega. |
 | `icone.png` / `icone-web.png` | Ícone do app, para og:image e favicon. |
 
 ## Antes de publicar — três coisas para trocar
@@ -48,3 +50,20 @@ cd ~/PingProng-Site && python3 -m http.server 8000
 ```
 
 Depois abra <http://localhost:8000>.
+
+## De onde vem o vídeo
+
+O jogo tem um piloto automático (`PP_AUTOPILOT=1`) que joga sozinho com
+precisão perfeita. A gravação saiu de:
+
+```bash
+xcrun simctl io <UDID> recordVideo --codec h264 bruto.mov
+SIMCTL_CHILD_PP_AUTOPILOT=1 xcrun simctl launch --console <UDID> com.hasmancorp.games.pingprong
+```
+
+O log `PPDIAG` marca cada ponto, cada bônus e cada BLAST por segundo — foi ele
+que localizou os melhores momentos, em vez de assistir aos 200 segundos.
+
+O corte e o redimensionamento foram feitos com `Montar.swift` (AVFoundation),
+em `~/PingProng-Video`, porque esta máquina não tem ffmpeg. O mesmo utilitário
+gerou o **App Preview** da App Store: 886x1920, 30 fps, 26,5 s.

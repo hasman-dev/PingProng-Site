@@ -63,6 +63,29 @@
   .btn-ghost:hover{ border-color:var(--mint); color:var(--mint); }
   .btn[aria-disabled="true"]{ opacity:.45; pointer-events:none; }
 
+  /* ---------- demo em video ---------- */
+  .demo{ margin:64px 0 0; display:flex; justify-content:center; }
+  .phone{
+    position:relative; width:min(268px, 72vw);
+    padding:10px; border-radius:40px;
+    background:linear-gradient(160deg, #202A38, #0C1219);
+    box-shadow:0 26px 70px rgba(0,0,0,.7), 0 0 0 1px var(--edge),
+               0 0 60px rgba(45,230,176,.09);
+  }
+  .phone video{
+    display:block; width:100%; height:auto;
+    border-radius:31px; background:var(--bg0);
+  }
+  .phone::after{      /* a ilha dinamica, so pra dar leitura de iPhone */
+    content:""; position:absolute; top:20px; left:50%; transform:translateX(-50%);
+    width:31%; height:15px; border-radius:99px; background:#05070A;
+  }
+  .demo-legenda{
+    text-align:center; margin:18px 0 0;
+    font:.72rem/1.5 var(--mono); letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted);
+  }
+
   /* ---------- capturas ---------- */
   .shots{
     display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
@@ -157,6 +180,15 @@
       <a class="btn btn-ghost" href="#suporte">Quero testar antes</a>
     </div>
   </header>
+
+  <div class="demo">
+    <div class="phone">
+      <video src="gameplay.mp4" poster="gameplay-poster.png"
+             autoplay muted loop playsinline preload="metadata"
+             aria-label="Trecho de uma partida de Ping Prong: rally, captura de bônus e um disparo BLAST."></video>
+    </div>
+  </div>
+  <p class="demo-legenda">Partida real, gravada em iPhone — sem edição de velocidade</p>
 
   <div class="shots">
     <img src="capturas/1-abertura-web.png" width="660" height="1434" loading="lazy"
