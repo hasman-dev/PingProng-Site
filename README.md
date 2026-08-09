@@ -30,10 +30,11 @@ Estão marcadas com comentário `<!-- TROQUE ... -->` dentro do `index.html`:
 
 1. ~~E-mail de suporte~~ — **feito**. É `hasman.corp.support@gmail.com`, na
    página e nas duas versões (PT/EN) da política de privacidade.
-2. **Link da App Store.** O botão está desativado com "Em breve". Quando o app
-   for aprovado, troque o `href` e remova `aria-disabled="true"`.
-3. **Link do TestFlight.** O botão "Quero testar antes" aponta para a seção de
-   suporte. Se você abrir um teste público, aponte-o para o link do TestFlight.
+2. ~~Link da App Store~~ — **feito**. Publicado em 8 de agosto de 2026:
+   `https://apps.apple.com/br/app/ping-prong/id6797659988`
+   O `6797659988` é o Apple ID do app; ele não muda entre versões.
+3. **Link do TestFlight.** O botão secundário aponta para a seção de suporte.
+   Se você abrir um teste público, aponte-o para o link do TestFlight.
 
 ## Se a política de privacidade mudar
 
