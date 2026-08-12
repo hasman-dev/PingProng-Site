@@ -31,6 +31,19 @@
     border-bottom:1px solid var(--edge); padding-bottom:3px;
   }
   .lang a:hover{ color:var(--mint); border-color:var(--mint); }
+
+  /* ---------- aviso de navegador embutido ---------- */
+  /* Nasce escondido e só aparece dentro do Instagram e afins — ver navegador.js.
+     Dourado porque é aviso, não erro: nada está quebrado, só limitado. */
+  .aviso-app{
+    display:none;
+    margin:64px 0 -40px; padding:14px 16px;
+    border:1px solid rgba(255,225,77,.34); border-radius:12px;
+    background:rgba(255,225,77,.06);
+    font:.82rem/1.55 var(--mono); color:#E4D5A2;
+  }
+  .aviso-app.on{ display:block; }
+  .aviso-app b{ color:var(--gold); }
   body{
     margin:0; background:var(--bg0); color:var(--ink);
     font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased;

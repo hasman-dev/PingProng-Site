@@ -25,6 +25,13 @@
 
   <p class="lang"><a href="index.html" hreflang="pt-BR" lang="pt-BR">Português</a></p>
 
+  <!-- Só aparece dentro do Instagram e afins. Ver navegador.js. -->
+  <p class="aviso-app">
+    <b>You're in an app's built-in browser.</b>
+    Email and App Store buttons may not respond to taps here.
+    Open the menu (⋯ or ⋮) and choose <b>Open in browser</b>.
+  </p>
+
   <header>
     <!-- The PRONG mark, the same paths as ProngMark.swift (88x88 space) -->
     <svg class="mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -151,6 +158,12 @@
       <p>
         <a class="btn btn-ghost" href="mailto:hasman.corp.support@gmail.com?subject=I%20want%20to%20test%20Ping%20Prong%20on%20Android">I want to test on Android</a>
       </p>
+      <!-- O endereço em texto puro é o plano B: dentro de navegador embutido o
+           mailto: costuma não abrir, mas copiar e colar sempre funciona. -->
+      <p style="font-size:.86rem; color:var(--muted); margin-top:14px;">
+        If the button doesn't open, the address is
+        <strong style="color:var(--ink)">hasman.corp.support@gmail.com</strong>
+      </p>
     </div>
   </section>
 
@@ -196,5 +209,6 @@
 </div>
 
 <script src="bola.js"></script>
+<script src="navegador.js"></script>
 </body>
 </html>
