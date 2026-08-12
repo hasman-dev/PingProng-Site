@@ -4,149 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ping Prong — Enfrente o poderoso PRONG</title>
-<meta name="description" content="Jogo de ping pong para iPhone. Sem anúncios, sem compras dentro do app, sem coleta de dados. Compre uma vez e jogue offline, para sempre.">
+<meta name="description" content="Jogo de ping pong para iPhone, e em breve para Android. Sem anúncios, sem compras dentro do app, sem coleta de dados. Jogue offline, para sempre.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ping Prong — Enfrente o poderoso PRONG">
-<meta property="og:description" content="Sem anúncios, sem compras dentro do app e sem coleta de dados. Compre uma vez e jogue offline, para sempre.">
+<meta property="og:description" content="Na App Store, e em breve no Android. Sem anúncios, sem compras dentro do app e sem coleta de dados. Jogue offline, para sempre.">
 <meta property="og:image" content="icone.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icone-web.png">
 
-<style>
-  :root{
-    --bg0:#05070A; --bg1:#0B111A; --panel:#0D1420; --edge:#16202E;
-    --mint:#2DE6B0; --copper:#E8935A; --danger:#FF6B6B;
-    --cyan:#38E7FF; --magenta:#FF4FD8; --gold:#FFE14D;
-    --ink:#EAF1EE; --muted:#6F8497;
-    --mono: ui-monospace, SFMono-Regular, Menlo, "SF Mono", monospace;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  }
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0; background:var(--bg0); color:var(--ink);
-    font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased;
-    background-image:
-      radial-gradient(circle at 15% 12%, rgba(45,230,176,.10), transparent 45%),
-      radial-gradient(circle at 85% 88%, rgba(232,147,90,.10), transparent 45%);
-    background-attachment:fixed;
-  }
-  .wrap{ max-width:62rem; margin:0 auto; padding:0 22px; }
-  a{ color:var(--mint); }
+<link rel="alternate" hreflang="pt-BR" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="x-default" href="index.html">
 
-  /* ---------- topo ---------- */
-  header{ padding:72px 0 8px; text-align:center; }
-  .mark{ width:96px; height:96px; display:block; margin:0 auto 22px;
-         filter:drop-shadow(0 0 14px rgba(232,147,90,.45)); }
-  h1{
-    font:800 clamp(2.6rem,9vw,4.6rem)/0.95 var(--sans);
-    letter-spacing:-.035em; margin:0; text-transform:uppercase;
-  }
-  h1 .p1{ color:var(--mint); } h1 .p2{ color:var(--copper); }
-  .sub{
-    font:600 .82rem/1 var(--mono); letter-spacing:.28em; text-transform:uppercase;
-    color:var(--muted); margin:20px 0 0;
-  }
-  .pitch{ max-width:34rem; margin:26px auto 0; color:#B6C4CE; font-size:1.06rem; }
-
-  /* ---------- botões ---------- */
-  .cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:34px 0 0; }
-  .btn{
-    display:inline-block; padding:13px 26px; border-radius:11px;
-    font:700 .82rem/1 var(--mono); letter-spacing:.14em; text-transform:uppercase;
-    text-decoration:none; border:1px solid var(--edge); transition:.16s;
-  }
-  .btn-primary{ background:var(--mint); color:#04120D; border-color:var(--mint); }
-  .btn-primary:hover{ box-shadow:0 0 26px rgba(45,230,176,.4); transform:translateY(-1px); }
-  .btn-ghost{ background:var(--panel); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--mint); color:var(--mint); }
-  .btn[aria-disabled="true"]{ opacity:.45; pointer-events:none; }
-
-  /* ---------- demo em video ---------- */
-  .demo{ margin:64px 0 0; display:flex; justify-content:center; }
-  .phone{
-    position:relative; width:min(268px, 72vw);
-    padding:10px; border-radius:40px;
-    background:linear-gradient(160deg, #202A38, #0C1219);
-    box-shadow:0 26px 70px rgba(0,0,0,.7), 0 0 0 1px var(--edge),
-               0 0 60px rgba(45,230,176,.09);
-  }
-  .phone video{
-    display:block; width:100%; height:auto;
-    border-radius:31px; background:var(--bg0);
-  }
-  .phone::after{      /* a ilha dinamica, so pra dar leitura de iPhone */
-    content:""; position:absolute; top:20px; left:50%; transform:translateX(-50%);
-    width:31%; height:15px; border-radius:99px; background:#05070A;
-  }
-  .demo-legenda{
-    text-align:center; margin:18px 0 0;
-    font:.72rem/1.5 var(--mono); letter-spacing:.16em; text-transform:uppercase;
-    color:var(--muted);
-  }
-
-  /* ---------- capturas ---------- */
-  .shots{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
-    margin:70px auto 0; align-items:start; max-width:34rem;
-  }
-  .shots img{
-    width:100%; height:auto; display:block; border-radius:18px;
-    border:1px solid var(--edge); box-shadow:0 18px 50px rgba(0,0,0,.55);
-  }
-  @media (max-width:640px){ .shots{ grid-template-columns:1fr; max-width:19rem; } }
-
-  /* ---------- seções ---------- */
-  section{ padding:76px 0 0; }
-  h2{
-    font:700 .78rem/1 var(--mono); letter-spacing:.26em; text-transform:uppercase;
-    color:var(--muted); margin:0 0 26px; padding-bottom:14px;
-    border-bottom:1px solid var(--edge);
-  }
-  .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:16px; }
-  .card{
-    background:var(--panel); border:1px solid var(--edge);
-    border-radius:14px; padding:22px 22px 24px;
-  }
-  .card h3{
-    font:700 .76rem/1 var(--mono); letter-spacing:.2em; text-transform:uppercase;
-    margin:0 0 10px;
-  }
-  .card p{ margin:0; color:#A9B8C4; font-size:.95rem; }
-  .c-gold h3{ color:var(--gold); }
-  .c-cyan h3{ color:var(--cyan); }
-  .c-mag h3{ color:var(--magenta); }
-  .c-mint h3{ color:var(--mint); }
-
-  /* ---------- o que não tem ---------- */
-  .nots{ display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:12px; }
-  .not{
-    border:1px solid var(--edge); border-radius:12px; padding:18px;
-    background:linear-gradient(180deg, rgba(45,230,176,.05), transparent);
-  }
-  .not b{ display:block; font:700 1.02rem/1.3 var(--sans); color:var(--mint); margin-bottom:3px; }
-  .not span{ font:.82rem/1.4 var(--mono); color:var(--muted); }
-
-  /* ---------- suporte ---------- */
-  .box{
-    background:var(--panel); border:1px solid var(--edge);
-    border-radius:14px; padding:26px;
-  }
-  .box p{ margin:0 0 12px; color:#A9B8C4; }
-  .box p:last-child{ margin-bottom:0; }
-
-  footer{
-    margin-top:88px; padding:30px 0 60px; border-top:1px solid var(--edge);
-    font:.8rem/1.7 var(--mono); color:var(--muted);
-    display:flex; gap:18px; flex-wrap:wrap; justify-content:space-between;
-  }
-  footer a{ color:var(--muted); }
-  footer a:hover{ color:var(--mint); }
-</style>
+<link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+<canvas id="blast-ball" aria-hidden="true"></canvas>
 <div class="wrap">
+
+  <p class="lang"><a href="en.html" hreflang="en" lang="en">English</a></p>
 
   <header>
     <!-- A marca do PRONG, os mesmos caminhos de ProngMark.swift (espaço 88x88) -->
@@ -171,13 +48,13 @@
     <p class="sub">Enfrente o poderoso PRONG</p>
     <p class="pitch">
       O PRONG não erra por cansaço. Não se distrai, não tem pressa
-      e não vai facilitar. Um jogo de ping pong de uma mão só, para iPhone.
+      e não vai facilitar. Um jogo de ping pong de uma mão só.
     </p>
 
-    <!-- TROQUE quando abrir teste público: href do TestFlight no botão secundário -->
     <div class="cta">
       <a class="btn btn-primary"
          href="https://apps.apple.com/br/app/ping-prong/id6797659988">Baixar na App Store</a>
+      <a class="btn btn-ghost" href="#android">Android · em breve</a>
       <a class="btn btn-ghost" href="#suporte">Suporte</a>
     </div>
   </header>
@@ -251,6 +128,32 @@
     </div>
   </section>
 
+  <section id="android">
+    <h2>Em breve no Android</h2>
+    <div class="box android">
+      <p class="android-titulo">O porte já está pronto e rodando.</p>
+      <p>
+        O Ping Prong foi reescrito em Kotlin, do zero — nenhuma linha compartilhada
+        com a versão do iPhone. Mesma quadra, mesmo BLAST, mesmos bônus, mesma regra
+        dos 11 pontos com 2 de vantagem. Já roda a
+        <strong>60 quadros por segundo</strong>, medidos num aparelho de 2019
+        — o mesmo número do iPhone.
+      </p>
+      <p>
+        O que falta não é código: é o processo da Google Play, que inclui um período
+        obrigatório de teste fechado antes de qualquer app novo poder ir ao ar.
+        Por isso não tem data ainda — quando tiver, ela aparece aqui.
+      </p>
+      <p class="android-cta">
+        <strong>Quer jogar antes?</strong> O teste fechado precisa de gente de
+        verdade, e há vaga. Escreva e eu te coloco na lista.
+      </p>
+      <p>
+        <a class="btn btn-ghost" href="mailto:hasman.corp.support@gmail.com?subject=Quero%20testar%20o%20Ping%20Prong%20no%20Android">Quero testar no Android</a>
+      </p>
+    </div>
+  </section>
+
   <section id="o-que-nao-tem">
     <h2>O que ele não tem</h2>
     <div class="nots">
@@ -286,10 +189,13 @@
     <span>
       <a href="privacidade.html">Privacidade</a> ·
       <a href="#suporte">Suporte</a> ·
+      <a href="en.html" hreflang="en">English</a> ·
       Feito no Brasil
     </span>
   </footer>
 
 </div>
+
+<script src="bola.js"></script>
 </body>
 </html>

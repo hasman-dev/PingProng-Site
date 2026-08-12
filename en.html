@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ping Prong — Take on the mighty PRONG</title>
+<meta name="description" content="A ping pong game for iPhone, with Android on the way. No ads, no in-app purchases, no data collection. Play offline, forever.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ping Prong — Take on the mighty PRONG">
+<meta property="og:description" content="On the App Store, with Android on the way. No ads, no in-app purchases and no data collection. Play offline, forever.">
+<meta property="og:image" content="icone.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icone-web.png">
+
+<link rel="alternate" hreflang="pt-BR" href="index.html">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="x-default" href="index.html">
+
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<canvas id="blast-ball" aria-hidden="true"></canvas>
+<div class="wrap">
+
+  <p class="lang"><a href="index.html" hreflang="pt-BR" lang="pt-BR">Português</a></p>
+
+  <header>
+    <!-- The PRONG mark, the same paths as ProngMark.swift (88x88 space) -->
+    <svg class="mark" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#E8935A">
+        <rect x="4"  y="32" width="14" height="6" rx="3"/>
+        <rect x="70" y="32" width="14" height="6" rx="3"/>
+        <rect x="4"  y="44" width="14" height="6" rx="3"/>
+        <rect x="70" y="44" width="14" height="6" rx="3"/>
+        <rect x="16" y="18" width="56" height="50" rx="12"/>
+      </g>
+      <polyline points="30,74 35,82 40,74 44,82 49,74 53,82 58,74"
+                fill="none" stroke="#FF6B6B" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#05070A">
+        <polygon points="25,34 41,43 41,52 25,43"/>
+        <polygon points="63,34 47,43 47,52 63,43"/>
+      </g>
+    </svg>
+
+    <h1><span class="p1">Ping</span> <span class="p2">Prong</span></h1>
+    <p class="sub">Take on the mighty PRONG</p>
+    <p class="pitch">
+      The PRONG never misses out of fatigue. It doesn't get distracted, it isn't
+      in a hurry, and it won't go easy on you. A one-handed ping pong game.
+    </p>
+
+    <!-- Sem o código de país: a App Store redireciona para a loja do visitante -->
+    <div class="cta">
+      <a class="btn btn-primary"
+         href="https://apps.apple.com/app/id6797659988">Download on the App Store</a>
+      <a class="btn btn-ghost" href="#android">Android · coming soon</a>
+      <a class="btn btn-ghost" href="#support">Support</a>
+    </div>
+  </header>
+
+  <div class="demo">
+    <div class="phone">
+      <video src="gameplay.mp4" poster="gameplay-poster.png"
+             autoplay muted loop playsinline preload="metadata"
+             aria-label="A clip from a Ping Prong match: a rally, a bonus capture and a BLAST shot."></video>
+    </div>
+  </div>
+  <p class="demo-legenda">A real match, recorded on iPhone — playback speed untouched</p>
+
+  <div class="shots">
+    <img src="capturas/1-abertura-web.png" width="660" height="1434" loading="lazy"
+         alt="Ping Prong opening screen, showing the PRONG mark and the start button.">
+    <img src="capturas/2-blast-web.png" width="660" height="1434" loading="lazy"
+         alt="A match with the BLAST meter charged: gold meter, gold ring around the player's paddle and a Slow Zone capsule on the court.">
+  </div>
+
+  <section id="how-to-play">
+    <h2>How it plays</h2>
+    <div class="cards">
+      <div class="card c-gold">
+        <h3>The BLAST shot</h3>
+        <p>Five clean returns in a row charge the meter. Once it turns gold, you have
+           an instant to tap the screen at the exact moment the ball meets your paddle.
+           Get the timing right and the ball comes back at a speed the PRONG can rarely
+           reach. Lose the point and the charge resets — the risk is real.</p>
+      </div>
+      <div class="card c-cyan">
+        <h3>Slow Zone</h3>
+        <p>A capsule is launched from the middle of the court and it won't come to you:
+           you have to intercept it with your paddle, leaving the ball for a moment.
+           It slows the ball down while it's on your side. Lasts 8 seconds.</p>
+      </div>
+      <div class="card c-mag">
+        <h3>Paddle+</h3>
+        <p>The other capsule makes your paddle bigger for the same 8 seconds. Both can
+           be active at once — and the PRONG grabs them too, if you let it.</p>
+      </div>
+      <div class="card c-mint">
+        <h3>Three speeds</h3>
+        <p>One button cycles through three levels. Each one speeds up the ball
+           <em>and</em> the PRONG by the same amount, so turning it up is never a way
+           to make things easier. First to 11 points with a 2-point lead wins — the
+           official table tennis rule.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="built-for-iphone">
+    <h2>Built for iPhone</h2>
+    <div class="cards">
+      <div class="card">
+        <h3 style="color:var(--ink)">Portrait or landscape</h3>
+        <p>Rotate the phone mid-match: the score, the BLAST charge and the ball's
+           position stay exactly where they were.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--ink)">60 frames per second</h3>
+        <p>Steady, measured on real hardware. Haptic feedback on every return,
+           every point and every shot.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--ink)">Respects your phone</h3>
+        <p>Sound effects obey the silent switch and never interrupt your music.
+           Animations respect Reduce Motion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="android">
+    <h2>Android is coming</h2>
+    <div class="box android">
+      <p class="android-titulo">The port is already built and running.</p>
+      <p>
+        Ping Prong was rewritten in Kotlin from scratch — not a single line shared
+        with the iPhone version. Same court, same BLAST, same bonuses, same
+        first-to-11-by-2 rule. It already runs at
+        <strong>60 frames per second</strong>, measured on a phone from 2019 —
+        the same number as the iPhone.
+      </p>
+      <p>
+        What's left isn't code: it's the Google Play process, which requires a
+        mandatory closed testing period before any new app can go live. That's why
+        there's no date yet — when there is one, it shows up here.
+      </p>
+      <p class="android-cta">
+        <strong>Want to play it early?</strong> The closed test needs real people,
+        and there's room. Write in and I'll add you to the list.
+      </p>
+      <p>
+        <a class="btn btn-ghost" href="mailto:hasman.corp.support@gmail.com?subject=I%20want%20to%20test%20Ping%20Prong%20on%20Android">I want to test on Android</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="what-it-doesnt-have">
+    <h2>What it doesn't have</h2>
+    <div class="nots">
+      <div class="not"><b>No ads</b><span>none, anywhere</span></div>
+      <div class="not"><b>No purchases</b><span>nothing inside the app</span></div>
+      <div class="not"><b>No sign-up</b><span>no account, no login</span></div>
+      <div class="not"><b>No internet</b><span>works in airplane mode</span></div>
+      <div class="not"><b>No tracking</b><span>zero data, audited</span></div>
+    </div>
+    <p style="margin:22px 0 0; color:#A9B8C4;">
+      Your best rally and your wins are stored on your device and go nowhere else.
+      The app never makes a single network call, uses no third-party SDK and asks
+      for no permissions.
+      <a href="privacidade.html#en">Read the privacy policy</a>.
+    </p>
+  </section>
+
+  <section id="support">
+    <h2>Support and contact</h2>
+    <div class="box">
+      <p>Found a problem, have a suggestion, or want to try the game before it
+         launches? Write in — every email is read by a person.</p>
+      <p><a class="btn btn-ghost" href="mailto:hasman.corp.support@gmail.com">hasman.corp.support@gmail.com</a></p>
+      <p style="font-size:.88rem; color:var(--muted); margin-top:16px;">
+        Usually answered within two business days. The game is made by one person.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ping Prong © 2026 Ramon Machado Hasman</span>
+    <span>
+      <a href="privacidade.html#en">Privacy</a> ·
+      <a href="#support">Support</a> ·
+      <a href="index.html" hreflang="pt-BR">Português</a> ·
+      Made in Brazil
+    </span>
+  </footer>
+
+</div>
+
+<script src="bola.js"></script>
+</body>
+</html>
