@@ -40,6 +40,138 @@ Estão marcadas com comentário `<!-- TROQUE ... -->` dentro do `index.html`:
 3. **Link do TestFlight.** O botão secundário aponta para a seção de suporte.
    Se você abrir um teste público, aponte-o para o link do TestFlight.
 
+## Ajustes pendentes (auditoria de 20/08/2026)
+
+Levantados com o detector do skill `impeccable` e com o Playwright, e **todos
+conferidos à mão** antes de entrar aqui — o detector produz falso positivo, e há
+uma lista dele no fim desta seção com o motivo de cada recusa.
+
+Nada foi alterado. A ordem abaixo é por custo-benefício: os quatro primeiros
+somam cerca de seis linhas.
+
+### 1. Rolagem horizontal no celular — o mais grave
+
+**Onde:** `index.html:193` e `en.html:192`, o botão do e-mail de suporte.
+
+Medido com o Playwright num viewport de **360px** (largura comum de Android):
+o botão tem **336px** de largura numa área de conteúdo de **301px**. Estoura
+35px e faz a **página inteira** rolar de lado, não só a seção.
+
+A causa é a soma de três coisas em `estilo.css:75` (`.btn`): o endereço tem 29
+caracteres, `padding:13px 26px` acrescenta 52px, e não há por onde quebrar.
+
+**Correção:** no `.btn`, permitir quebra do endereço (`overflow-wrap:anywhere`)
+ou dar ao botão de e-mail uma variante com padding menor e fonte menor. Não
+reduza o padding de `.btn` em geral — os botões do topo dependem dele.
+
+**Por que importa:** afeta todo visitante de celular, e a seção logo acima é a
+que recruta os 12 testadores que destravam a Play Store.
+
+### 2. `og:image` com caminho relativo
+
+**Onde:** `index.html:12` e `en.html:12` — `content="icone.png"`.
+
+O arquivo existe e responde HTTP 200. O problema é o formato: Open Graph pede
+**URL absoluta**, e os crawlers de Facebook, WhatsApp e Instagram em geral não
+resolvem caminho relativo. A prévia do link sai sem imagem.
+
+**Correção:** `https://hasman-dev.github.io/PingProng-Site/icone.png` nos dois
+arquivos. Se um dia entrar domínio próprio, este é um dos pontos a trocar.
+
+**Por que importa:** o tráfego vem do Instagram — a própria página tem aviso de
+navegador embutido por causa disso. A prévia do link é o que faz clicar.
+
+### 3. Dois contrastes reprovam WCAG AA em `privacidade.html`
+
+Calculados pela fórmula de luminância relativa, não estimados.
+
+| Elemento | Onde | Atual | Precisa |
+| --- | --- | --- | --- |
+| Links | `privacidade.html:41`, `a{ color:var(--mint) }` no tema **claro** | 3,47:1 | 4,5:1 |
+| `.tag` "Ping Prong" | `privacidade.html:26`, branco sobre `--copper` | 3,66:1 | 4,5:1 |
+
+**A causa dos links é estrutural.** O bloco `@media (prefers-color-scheme: dark)`
+em `privacidade.html:12` redefine `--ink`, `--muted`, `--line` e `--bg`, mas
+**não** `--mint` nem `--copper`. O tema escuro passa por acidente (5,45:1); o
+claro falha.
+
+**Cuidado — a correção óbvia quebra o outro tema.** Trocar `--mint` por
+`#0f8667` resolve o claro (4,54:1) e **reprova** no escuro (4,17:1). O certo é
+redefinir por tema:
+
+- `:root` (claro): `--mint:#0f8667` → 4,54:1 sobre branco
+- dentro do `@media ... dark`: `--mint:#129c78` → 5,45:1 sobre `#0d1117`
+
+Para a `.tag`, duas saídas, ambas verificadas:
+
+- **A** — escurecer o cobre para `#ac6335`, mantendo texto branco → 4,57:1
+- **B** — manter `#c4703c` e usar texto escuro `#2a1408` → 4,77:1
+
+A **B** preserva melhor a cor da marca, que é o cobre do PRONG.
+
+### 4. Dois cosméticos
+
+**`border-left:3px solid var(--mint)`** em `privacidade.html:31` (`.lead`). O
+skill chama isso de "side-tab" e o classifica como o tique mais reconhecível de
+interface gerada por IA. Trocar por fundo sutil sem a barra lateral.
+
+**Legenda em caixa alta** — `index.html:76` e `en.html:77` (`.demo-legenda`,
+estilo em `estilo.css:103`): 58 caracteres em mono 11,5px com
+`letter-spacing:.16em`. Caixa alta serve para rótulo curto; uma frase inteira
+perde a forma das palavras, que é como se lê. Manter o estilo e encurtar o
+texto, ou tirar o `text-transform` desta classe.
+
+### 5. Identidade da página de privacidade — maior ganho, maior escopo
+
+O site é placa de circuito escura com mono e as cores do jogo. A
+`privacidade.html` é documento branco com fonte de sistema e CSS próprio no
+`<head>`. Lado a lado parecem dois produtos.
+
+Isto **não** é bug: a legibilidade de documento legal foi uma escolha, e ela
+está correta. Mas dá para manter a legibilidade e ainda assim parecer o mesmo
+produto — cabeçalho com a marca do PRONG, os tokens de cor do `estilo.css`, o
+par mono/sans do site.
+
+Fica por último de propósito: é o único item que não é correção de defeito.
+
+### 6. Menores
+
+- **Sem `<link rel="canonical">`** em `index.html` e `en.html`. Com duas páginas
+  no ar e `hreflang` cruzado, evita ambiguidade de indexação.
+- **Alvos de toque abaixo de 44px** (mínimo recomendado): "English" no topo tem
+  18px de altura, os links do rodapé 15px, os `.btn` 41px. Os botões estão perto;
+  os links de texto são os que realmente incomodam no polegar.
+
+### O que foi recusado, e por quê
+
+O detector acusou 16 anti-patterns. Estes **não** serão corrigidos:
+
+| Achado | Motivo da recusa |
+| --- | --- |
+| `dark-glow` (3×) | O brilho neon **é** a identidade, herdada do jogo. O próprio SKILL.md manda honrar estética definida: redirecionar um brief claro para o gosto do detector é falha, não conserto. |
+| `flat-type-hierarchy` | Falso positivo: o detector **não resolve `clamp()`**. Listou só 11,5–17px e ignorou o H1, que medido no navegador tem **73,6px**. |
+| `gpt-thin-border-wide-shadow` (2×) | É o mockup de iPhone, que precisa de borda definida **e** elevação para ler como aparelho. |
+| `kicker-above-heading` | Discutível; se o item 5 for feito, o rótulo sai junto de qualquer forma. |
+| `em-dash-overuse` (advisory) | A copy é escrita à mão e tem voz própria. Advisory nunca reprova. |
+
+### Duas armadilhas das ferramentas
+
+Quem repetir esta auditoria precisa saber:
+
+1. **O detector roda degradado sem quatro módulos npm** (`htmlparser2`,
+   `css-select`, `css-tree`, `domutils`). Ele avisa uma vez no topo e continua.
+   Aqui achou **1** anti-pattern degradado contra **16** com o parser completo —
+   subcontagem de 16×, com cara de atestado de saúde limpo.
+   Antes de rodar: `npm install --no-save htmlparser2 css-select css-tree domutils`
+
+2. **O Playwright não toca H.264.** Ele roda Chromium sem codecs proprietários,
+   então `gameplay.mp4` falha com `DEMUXER_ERROR_COULD_NOT_OPEN` e parece
+   quebrado. **Não está**: o arquivo foi conferido — `moov` antes de `mdat`
+   (faststart correto), `avc1`, 2,13 MB, e falha igual mesmo baixando o blob
+   inteiro sem range request. Pior: `canPlayType` responde `"probably"` mesmo
+   assim, ou seja, a checagem de capacidade mente. Para validar vídeo, use outro
+   navegador. Para DOM, console, rede, layout e viewport o Playwright é confiável.
+
 ## As bolas do BLAST
 
 O único script da página. Um `<canvas>` fixo atrás de todo o conteúdo, com

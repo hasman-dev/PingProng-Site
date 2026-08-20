@@ -2,3 +2,10 @@
 .DS_Store
 .AppleDouble
 Icon?
+
+# Ferramentas de auditoria de design (skills impeccable / emilkowalski / taste
+# e as dependencias do detector). Sao locais: nada disso vai para o Pages.
+.agents/
+.claude/
+node_modules/
+skills-lock.json
