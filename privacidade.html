@@ -42,6 +42,7 @@
   hr{ border:0; border-top:1px solid var(--line); margin:56px 0 40px; }
   footer{ color:var(--muted); font-size:.85rem; margin-top:56px; }
   [lang="en"] h1{ font-size:1.6rem; }
+  .plat{ font-weight:700; }
 </style>
 </head>
 <body>
@@ -49,12 +50,14 @@
 
   <span class="tag">Ping Prong</span>
   <h1>Política de Privacidade</h1>
-  <p class="date">Vigente desde 1º de agosto de 2026</p>
+  <p class="date">Vigente desde 1º de agosto de 2026 · atualizada em 18 de
+  setembro de 2026 para incluir o app para Android</p>
 
   <div class="lead">
     <strong>O Ping Prong não coleta absolutamente nenhum dado sobre você.</strong>
-    Ele não se conecta à internet, não tem anúncios, não usa nenhum serviço de
-    terceiros e não pede nenhuma permissão do seu aparelho.
+    Ele não se conecta à internet, não tem anúncios, não tem ferramentas de
+    análise ou rastreamento e não pede acesso a nada pessoal no seu aparelho.
+    Vale para o iPhone e para o Android.
   </div>
 
   <h2>Dados que coletamos</h2>
@@ -62,9 +65,8 @@
   compartilha qualquer informação sobre você ou sobre seu aparelho.</p>
 
   <h2>Dados guardados no seu aparelho</h2>
-  <p>O jogo guarda cinco informações localmente, usando o armazenamento padrão
-  do iOS (<code>UserDefaults</code>), apenas para que o app se comporte como você
-  deixou da última vez:</p>
+  <p>O jogo guarda cinco informações localmente, apenas para que o app se
+  comporte como você deixou da última vez:</p>
   <ul>
     <li>seu recorde de rebatidas seguidas;</li>
     <li>quantas partidas você venceu;</li>
@@ -73,8 +75,16 @@
     <li>se o app já lhe ofereceu avaliar o jogo nesta versão — para não repetir
     o convite.</li>
   </ul>
-  <p>Essas informações <strong>nunca saem do seu iPhone</strong>. Não temos
-  acesso a elas. Apagar o aplicativo apaga tudo, definitivamente.</p>
+  <p>Elas ficam no armazenamento padrão do sistema: <code>UserDefaults</code> no
+  iPhone e <code>SharedPreferences</code> no Android. <strong>Não temos acesso a
+  elas</strong>, e o app nunca as envia a lugar nenhum.</p>
+  <p>Elas só saem do aparelho pelas cópias e transferências que o
+  <strong>próprio sistema</strong> faz, se você usar esses recursos: no iPhone,
+  o backup do iCloud, o backup no computador (Finder ou iTunes) e a migração para
+  um iPhone novo; no Android, o backup do Google e a transferência para um
+  celular novo. É o que permite seu recorde sobreviver à troca de aparelho.
+  Essas cópias ficam na <strong>sua</strong> conta ou no seu computador, sob as
+  regras da Apple ou do Google, e nós não temos acesso a elas.</p>
 
   <h2>Rede, rastreamento e terceiros</h2>
   <ul>
@@ -82,33 +92,61 @@
     integralmente em modo avião.</li>
     <li>Não há anúncios nem compras dentro do aplicativo.</li>
     <li>Não há ferramentas de análise, métricas ou telemetria.</li>
-    <li>Não há nenhum SDK de terceiros — o app usa apenas estruturas do próprio
-    sistema iOS.</li>
     <li>Não usamos identificadores de publicidade nem qualquer forma de
     rastreamento entre aplicativos.</li>
-    <li>Não pedimos acesso a câmera, microfone, fotos, localização, contatos ou
-    qualquer outro recurso protegido.</li>
+    <li>Não há nenhum SDK de publicidade, análise ou rastreamento. No iPhone, o
+    app usa apenas estruturas do próprio iOS. No Android, além das bibliotecas
+    padrão do Android (AndroidX/Jetpack) e da linguagem Kotlin, o único
+    componente de terceiros é a biblioteca oficial de avaliação do Google Play,
+    com os módulos do Google Play services de que ela depende, explicada
+    abaixo.</li>
+  </ul>
+
+  <h2>Avaliação do app</h2>
+  <p>No máximo uma vez por versão, o jogo pode abrir a janela de avaliação da
+  própria loja (App Store ou Google Play). Avaliar é opcional. Se você avaliar,
+  a nota e o comentário vão <strong>direto para a loja</strong>, que os trata
+  pelas regras dela — o app não recebe, não vê e não guarda o que você
+  escreveu. No Android, essa janela é aberta pela biblioteca de avaliação do
+  Google Play, que conversa com o app da Play Store instalado no seu
+  aparelho.</p>
+
+  <h2>Permissões</h2>
+  <ul>
+    <li><span class="plat">iPhone:</span> o app não pede nenhuma permissão.</li>
+    <li><span class="plat">Android:</span> a única permissão do sistema que o
+    app usa é a de <strong>vibração</strong>, para o toque tátil nas rebatidas,
+    nos pontos e no BLAST. É uma permissão comum, concedida pelo sistema na
+    instalação, e não dá acesso a nenhum dado seu. A lista técnica de
+    permissões também mostra uma permissão interna
+    (<code>DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>), que a biblioteca
+    AndroidX cria só para proteger o próprio app — nenhum outro app pode
+    obtê-la.</li>
+    <li>Em nenhuma das duas plataformas pedimos acesso a câmera, microfone,
+    fotos, localização, contatos ou qualquer outro recurso protegido.</li>
   </ul>
 
   <h2>Crianças</h2>
-  <p>O aplicativo é adequado para todas as idades e, por não coletar dado algum,
-  não coleta informações de crianças. Ele está em conformidade com a COPPA e com
-  regulamentações equivalentes pela via mais simples possível: não há dado nenhum
-  a proteger.</p>
+  <p>O Ping Prong não é direcionado a crianças menores de 13 anos, embora seu
+  conteúdo seja livre para todas as idades. Como o app não coleta dado algum,
+  não coleta informações de ninguém — inclusive de crianças.</p>
 
   <h2>Seus direitos</h2>
   <p>Leis de proteção de dados como a LGPD e o GDPR dão a você o direito de
   acessar, corrigir e excluir seus dados pessoais. Como não coletamos nenhum,
   não há nada para acessar, corrigir ou excluir do nosso lado. Os dados locais
-  são removidos ao desinstalar o aplicativo.</p>
+  são removidos ao desinstalar o aplicativo; as cópias de segurança do sistema,
+  se existirem, você gerencia nos ajustes do iCloud, no seu computador ou na sua
+  conta Google.</p>
 
   <h2>Mudanças nesta política</h2>
   <p>Se uma versão futura do aplicativo passar a coletar qualquer informação,
-  esta política será atualizada antes do lançamento dessa versão, e a data de
-  vigência acima será alterada.</p>
+  esta política será atualizada antes do lançamento dessa versão, e a data no
+  topo desta página será alterada.</p>
 
-  <h2>Contato</h2>
-  <p>Dúvidas sobre esta política:
+  <h2>Responsável e contato</h2>
+  <p>O Ping Prong é desenvolvido e mantido por Ramon Machado Hasman, responsável
+  por esta política. Dúvidas:
   <a href="mailto:hasman.corp.support@gmail.com">hasman.corp.support@gmail.com</a></p>
 
   <hr>
@@ -116,12 +154,14 @@
   <!-- id="en": a página em inglês (en.html) aponta direto para cá -->
   <section id="en" lang="en">
     <h1>Privacy Policy</h1>
-    <p class="date">Effective August 1, 2026</p>
+    <p class="date">Effective August 1, 2026 · updated September 18, 2026 to
+    cover the Android app</p>
 
     <div class="lead">
       <strong>Ping Prong collects no data about you whatsoever.</strong>
-      It does not connect to the internet, contains no advertising, uses no
-      third-party services, and requests no device permissions.
+      It does not connect to the internet, contains no advertising, has no
+      analytics or tracking tools, and asks for no access to anything personal
+      on your device. This applies to both iPhone and Android.
     </div>
 
     <h2>Data we collect</h2>
@@ -129,13 +169,20 @@
     information about you or your device.</p>
 
     <h2>Data stored on your device</h2>
-    <p>The game saves five items locally using the standard iOS storage
-    (<code>UserDefaults</code>), solely so the app behaves the way you left it:
-    your longest rally, your number of wins, whether sound is on, the chosen
-    speed level, and whether the app has already offered you the chance to rate
-    it in this version. This information <strong>never leaves your
-    iPhone</strong>. We have no access to it. Deleting the app deletes it
-    permanently.</p>
+    <p>The game saves five items locally, solely so the app behaves the way you
+    left it: your longest rally, your number of wins, whether sound is on, the
+    chosen speed level, and whether the app has already offered you the chance
+    to rate it in this version, so it doesn't ask again. They are kept in the system's standard storage
+    (<code>UserDefaults</code> on iPhone, <code>SharedPreferences</code> on
+    Android). <strong>We have no access to them</strong>, and the app never
+    sends them anywhere.</p>
+    <p>They leave your device only through the copies and transfers the
+    <strong>operating system itself</strong> makes, if you use those features:
+    on iPhone, iCloud Backup, computer backup (Finder or iTunes) and migration to
+    a new iPhone; on Android, Google backup and transfer to a new phone. That is
+    what lets your record survive a phone upgrade. Those copies live in
+    <strong>your</strong> account or on your computer, under Apple's or Google's
+    terms, and we have no access to them.</p>
 
     <h2>Network, tracking and third parties</h2>
     <ul>
@@ -143,30 +190,57 @@
       in airplane mode.</li>
       <li>No advertising and no in-app purchases.</li>
       <li>No analytics, metrics or telemetry.</li>
-      <li>No third-party SDKs — the app uses only Apple system frameworks.</li>
       <li>No advertising identifiers and no cross-app tracking.</li>
-      <li>No access requested to camera, microphone, photos, location, contacts
-      or any other protected resource.</li>
+      <li>No advertising, analytics or tracking SDKs. On iPhone the app uses
+      only Apple system frameworks. On Android, besides the standard Android
+      libraries (AndroidX/Jetpack) and the Kotlin language runtime, the only
+      third-party component is Google Play's official in-app review library,
+      with the Google Play services modules it depends on, described below.</li>
+    </ul>
+
+    <h2>Rating the app</h2>
+    <p>At most once per version, the game may open the store's own rating
+    prompt (App Store or Google Play). Rating is optional. If you rate, your
+    stars and comment go <strong>straight to the store</strong>, which handles
+    them under its own terms — the app never receives, sees or stores what you
+    wrote. On Android, the prompt is opened by Google Play's in-app review
+    library, which talks to the Play Store app installed on your device.</p>
+
+    <h2>Permissions</h2>
+    <ul>
+      <li><span class="plat">iPhone:</span> the app requests no permissions.</li>
+      <li><span class="plat">Android:</span> the only system permission the app
+      uses is <strong>vibration</strong>, for haptic feedback on hits, points and
+      BLAST. It is a normal permission, granted by the system at install time,
+      and gives no access to any of your data. The technical permission list
+      also shows an internal permission
+      (<code>DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>) that the AndroidX
+      library creates solely to protect the app itself — no other app can
+      obtain it.</li>
+      <li>On neither platform do we request access to camera, microphone,
+      photos, location, contacts or any other protected resource.</li>
     </ul>
 
     <h2>Children</h2>
-    <p>The app is suitable for all ages and, collecting no data at all, collects
-    no information from children. It complies with COPPA and equivalent
-    regulations in the simplest possible way: there is no data to protect.</p>
+    <p>Ping Prong is not directed at children under 13, although its content is
+    suitable for all ages. Because the app collects no data at all, it collects
+    no information from anyone — including children.</p>
 
     <h2>Your rights</h2>
     <p>Data protection laws such as GDPR and Brazil's LGPD grant you the right to
     access, correct and delete your personal data. As we collect none, there is
     nothing for us to access, correct or delete. Local data is removed when you
-    uninstall the app.</p>
+    uninstall the app; system backups, if any, are managed in your iCloud
+    settings, on your computer or in your Google account.</p>
 
     <h2>Changes to this policy</h2>
     <p>If a future version of the app begins collecting any information, this
-    policy will be updated before that version ships, and the effective date
-    above will change.</p>
+    policy will be updated before that version ships, and the date at the top
+    of this page will change.</p>
 
-    <h2>Contact</h2>
-    <p>Questions about this policy:
+    <h2>Who is responsible, and contact</h2>
+    <p>Ping Prong is developed and maintained by Ramon Machado Hasman, who is
+    responsible for this policy. Questions:
     <a href="mailto:hasman.corp.support@gmail.com">hasman.corp.support@gmail.com</a></p>
   </section>
 

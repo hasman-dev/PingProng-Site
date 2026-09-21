@@ -241,8 +241,10 @@ sobre "não tem data ainda" sai junto.
 
 ## Se a política de privacidade mudar
 
-Ela é gerada em `Loja/politica-de-privacidade.html`, no repositório do jogo.
-Edite **lá**, copie para cá e atualize a data de vigência nos dois lugares.
+**Fonte única: `privacidade.html`, aqui.** Desde 18/09/2026 ela cobre iPhone e
+Android e é editada só neste repositório. A cópia antiga em
+`Loja/politica-de-privacidade.html` do projeto iOS ficou desatualizada (só iOS):
+não copie de lá. Ao mudar, atualize a data no topo nas duas línguas.
 O que a política afirma foi auditado no código — se o app passar a fazer
 chamada de rede, usar SDK de terceiros ou pedir permissão, a política tem que
 mudar junto.
